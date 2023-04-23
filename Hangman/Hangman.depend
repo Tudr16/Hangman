@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1680014338 source:c:\users\uidk2520\desktop\others\c++ projects\hangman\main.cpp
+	<iostream>
+	<string>
+
