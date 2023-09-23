@@ -1,0 +1,61 @@
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a[102][102],n,m;
+    cin>>n>>m;
+    for(int i=1;i<=n;i++)
+        for(int j=1;j<=m;j++)
+            cin>>a[i][j];
+    int maxx=0, minn=1000000, imax, imin, jmax,jmin;
+    for(int i=1;i<=n;i++)
+        for(int j=1;j<=m;j++)
+            {
+            if(a[i][j]>maxx)
+            {
+                maxx=a[i][j];
+                imax=i;
+                jmax=j;
+            }
+            if(a[i][j]<minn)
+            {
+                minn=a[i][j];
+                imin=i;
+                jmin=j;
+            }
+            }
+    if(imin!=imax)//daca maximul si minimul nu sunt pe aceeasi linie 
+    {
+    for(int i=imin;i<n;i++)
+        for(int j=1;j<=m;j++)
+            a[i][j]=a[i+1][j];
+    n--;
+    }
+    if(imax>imin) imax--;//daca maximul e mai jos decat minimul
+    for(int i=imax;i<n;i++)
+        for(int j=1;j<=m;j++)
+            a[i][j]=a[i+1][j];
+    n--;
+    if(jmin!=jmax)//daca maximul si minimul nu sunt pe aceeasi coloana
+    {
+    for(int j=jmax;j<m;j++)
+        for(int i=1;i<=n;i++)
+            a[i][j]=a[i][j+1];
+    m--;
+    }
+    if(jmin>jmax) jmin--;//daca minimul e mai la dreapta decat maximul
+    for(int j=jmin;j<m;j++)
+        for(int i=1;i<=n;i++)
+            a[i][j]=a[i][j+1];
+    m--;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=m;j++)
+            cout<<a[i][j]<<" ";
+        cout<<endl;
+    }
+    return 0;
+}
